@@ -9,9 +9,9 @@ const Main = () => {
     console.log(todos);
 
   return (
-    <div className="todo__main">
+    <section className="todo__main">
       <Form todos={todos} setTodos={setTodos} />
-    </div>
+    </section>
   );
 };
 

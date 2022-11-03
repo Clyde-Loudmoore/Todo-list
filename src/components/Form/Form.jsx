@@ -6,7 +6,7 @@ import "./Form.css";
 
 const Form = ({ todos, setTodos }) => {
   const [userInputField, setUserInputField] = useState("");
-  
+
   const handleChange = (event) => {
     setUserInputField(event.target.value);
   };
@@ -14,13 +14,13 @@ const Form = ({ todos, setTodos }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setUserInputField('');
+    setUserInputField("");
 
     setTodos((todo) => {
-        todo.push(userInputField);
-        return todo;
+      todo.push(userInputField);
+      return todo;
     });
-  }
+  };
 
   return (
     <form className="todo__form" onSubmit={handleSubmit}>
@@ -29,15 +29,23 @@ const Form = ({ todos, setTodos }) => {
         type="text"
         value={userInputField}
         onChange={handleChange}
+        placeholder="What needs to be done?"
       ></input>
-
-      <Buttons />
 
       <ul className="todo__tasklist">
         {todos.map((item, i) => {
-          return <li key={i}>{item}</li>;
+          return (
+            <li className="todo__list" key={i}>
+              <div className="todo__checkbox-wrapper" >
+                <input type="checkbox" className="todo__checkbox" />
+              </div>
+              {item}
+            </li>
+          );
         })}
       </ul>
+
+      <Buttons />
     </form>
   );
 };

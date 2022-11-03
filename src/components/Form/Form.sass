@@ -1,12 +1,41 @@
-.todo__input
-    width: 220px
-    height: 25px
-    padding: 0 22px
-    margin-top: 35px
-    background: #f3f56779
-    border: 1px solid #a7a84790
-    border-radius: 15px
-    cursor: pointer
-    &:focus
-        background: #f3f567
-        outline: none
+.todo
+    &__form
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__input
+        width: 75%
+        height: 25px
+        padding: 10px 0 10px 25px
+        margin: 35px auto 0 auto
+        background: #f2f56790
+        border: 2px solid #a7a84790
+        cursor: pointer
+        &:focus
+            background: #f3f567
+            outline: none
+
+    &__tasklist
+        width: 80%
+        margin: 0 auto
+        padding: 0
+
+    &__list
+        background: #f2f56790
+        padding: 10px 0
+        border: 1px solid #c6c941
+        list-style-type: none
+        word-break: break-all
+        display: flex
+        align-items: center
+        &:hover
+            transform: scale(1.1)
+
+    &__checkbox
+        &:hover
+            transform: scale(1.3)
+    &__checkbox-wrapper
+        padding-right: 10px
+
