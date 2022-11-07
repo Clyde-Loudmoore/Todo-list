@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Form.css";
 
 const Form = ({ addTask }) => {
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = React.useState("");
 
   const handleChange = (e) => {
     setUserInput(e.currentTarget.value);

@@ -1,17 +1,25 @@
 import "./Buttons.css";
 
-const Buttons = ({ todoFilter }) => {
+const Buttons = ({ onClick }) => {
+  const buttons = [
+    { title: "All", status: "all" },
+    { title: "Active", status: true },
+    { title: "Complited", status: false },
+  ];
+
   return (
     <div className="todo__buttons">
-      <button className="buttons" onClick={() => todoFilter("all")}>
-        All
-      </button>
-      <button className="buttons" onClick={() => todoFilter(false)}>
-        Active
-      </button>
-      <button className="buttons" onClick={() => todoFilter(true)}>
-        Copmlited
-      </button>
+      {buttons.map((item, index) => {
+        return (
+          <button
+            className="buttons"
+            key={index}
+            onClick={() => onClick(item.status)}
+          >
+            {item.title}
+          </button>
+        );
+      })}
     </div>
   );
 };
