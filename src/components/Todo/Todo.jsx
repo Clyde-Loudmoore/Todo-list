@@ -1,7 +1,7 @@
 import Delete from "./img/delete.png";
 import "./Todo.css";
 
-const Todo = ({ todo, toggleTask, removeTask }) => {
+const Todo = ({ todo, toggleTask, onDelete }) => {
   return (
     <div className="todo__tasklist" key={todo.id}>
       <ul className="todo">
@@ -16,7 +16,7 @@ const Todo = ({ todo, toggleTask, removeTask }) => {
             {todo.task}
           </div>
           <div className="todo__list-remove">
-            <button className="todo__delete" type="button" onClick={() => removeTask(todo.id)}>
+            <button className="todo__delete" type="button" onClick={() => onDelete(todo.id)}>
               <img src={Delete} alt="delete" />
             </button>
           </div>

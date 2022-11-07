@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
+import Footer from "../components/Footer/Footer";
 
 import "./App.css";
 
@@ -54,8 +55,9 @@ const App = () => {
         onClick={todoFilter}
         filteredTodos={filteredTodos}
         toggleTask={toggleTask}
-        removeTask={removeTask}
+        onDelete={removeTask}
       />
+      <Footer todos={todos} />
     </div>
   );
 };

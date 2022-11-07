@@ -3,7 +3,6 @@ import React from "react";
 import Form from "../Form/Form";
 import Todo from "../Todo/Todo";
 import Buttons from "../Buttons/Buttons";
-import Counter from "../Counter/Counter";
 
 import "./Main.css";
 
@@ -12,8 +11,7 @@ const Main = ({
   onClick,
   filteredTodos,
   toggleTask,
-  removeTask,
-  todos,
+  onDelete,
 }) => {
   return (
     <main className="todo__main">
@@ -25,11 +23,10 @@ const Main = ({
             todo={todo}
             key={todo.id}
             toggleTask={toggleTask}
-            removeTask={removeTask}
+            onDelete={onDelete}
           />
         );
       })}
-      <Counter todos={todos} />
     </main>
   );
 };

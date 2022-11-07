@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import React from "react";
 
-import "./Counter.css";
+import "./Footer.css";
 
 const countComplitedTask = (todos) => {
   let count = 0;
@@ -14,8 +14,8 @@ const countComplitedTask = (todos) => {
   return count;
 };
 
-const Counter = (props) => {
-  const counterTask = useMemo(
+const Footer = (props) => {
+  const counterTask = React.useMemo(
     () => countComplitedTask(props.todos),
     [props.todos]
   );
@@ -32,4 +32,4 @@ const Counter = (props) => {
   );
 };
 
-export default Counter;
+export default Footer;
