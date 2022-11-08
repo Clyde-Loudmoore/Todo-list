@@ -12,6 +12,7 @@ const Main = ({
   filteredTodos,
   toggleTask,
   onDelete,
+  setTodos,
 }) => {
   return (
     <main className="todo__main">
@@ -24,6 +25,7 @@ const Main = ({
             key={todo.id}
             toggleTask={toggleTask}
             onDelete={onDelete}
+            setTodos={setTodos}
           />
         );
       })}

@@ -15,6 +15,17 @@ const App = () => {
     setFilteredTodos(todos);
   }, [todos]);
 
+  React.useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    if (todos) {
+      setTodos(todos);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const addTask = (userInput) => {
     if (userInput) {
       const newItem = { id: uuidv4(), task: userInput, status: false };
@@ -56,6 +67,7 @@ const App = () => {
         filteredTodos={filteredTodos}
         toggleTask={toggleTask}
         onDelete={removeTask}
+        setTodos={setTodos}
       />
       <Footer todos={todos} />
     </div>
