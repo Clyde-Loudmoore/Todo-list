@@ -67,7 +67,6 @@ const App = () => {
         filteredTodos={filteredTodos}
         toggleTask={toggleTask}
         onDelete={removeTask}
-        setTodos={setTodos}
       />
       <Footer todos={todos} />
     </div>
