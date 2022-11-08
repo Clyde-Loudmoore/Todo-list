@@ -61,7 +61,6 @@ const App = () => {
     <div className="todo__container">
       <Header />
       <Main
-        todos={todos}
         addTask={addTask}
         onClick={todoFilter}
         filteredTodos={filteredTodos}
