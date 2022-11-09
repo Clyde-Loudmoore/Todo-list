@@ -6,18 +6,12 @@ import Buttons from "../Buttons/Buttons";
 
 import "./Main.css";
 
-const Main = ({
-  addTask,
-  onClick,
-  filteredTodos,
-  toggleTask,
-  onDelete,
-}) => {
+const Main = ({ addTask, onClick, toggleTask, onDelete, todos }) => {
   return (
     <main className="todo__main">
       <Form addTask={addTask} />
       <Buttons onClick={onClick} />
-      {filteredTodos.map((todo) => {
+      {todos.map((todo) => {
         return (
           <Todo
             todo={todo}

@@ -8,23 +8,29 @@ import Footer from "../components/Footer/Footer";
 import "./App.css";
 
 const App = () => {
-  const [todos, setTodos] = React.useState([]);
-  const [filteredTodos, setFilteredTodos] = React.useState(todos);
-
-  React.useEffect(() => {
-    setFilteredTodos(todos);
-  }, [todos]);
-
-  React.useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem("todos"));
-    if (todos) {
-      setTodos(todos);
-    }
-  }, []);
+  const [todos, setTodos] = React.useState(
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
+  const [filteredTodos, setFilteredTodos] = React.useState("all");
 
   React.useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
+  const todoFilter = React.useMemo(() => {
+    return todos.filter((todo) => {
+      if (filteredTodos === "true") {
+        return setFilteredTodos({ ...todo, status: true });
+      } else if (filteredTodos === "false") {
+        return setFilteredTodos({ ...todo, status: false });
+      } else if (filteredTodos === "all") {
+        return setFilteredTodos({ ...todo });
+      }
+      return todo;
+    });
+  }, [filteredTodos, todos]);
+
+  console.log(todoFilter);
 
   const addTask = (userInput) => {
     if (userInput) {
@@ -47,23 +53,14 @@ const App = () => {
     setTodos(filteredTodo);
   };
 
-  const todoFilter = (status) => {
-    if (status === "all") {
-      setFilteredTodos(todos);
-    } else {
-      const newTodos = todos.filter((todo) => todo.status === status);
-      setFilteredTodos(newTodos);
-      console.log(newTodos);
-    }
-  };
-
   return (
     <div className="todo__container">
       <Header />
       <Main
+        todos={todos}
+        todoFilter={todoFilter}
         addTask={addTask}
-        onClick={todoFilter}
-        filteredTodos={filteredTodos}
+        onClick={setFilteredTodos}
         toggleTask={toggleTask}
         onDelete={removeTask}
       />

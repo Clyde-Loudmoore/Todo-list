@@ -3,8 +3,8 @@ import "./Buttons.css";
 const Buttons = ({ onClick }) => {
   const buttons = [
     { title: "All", status: "all" },
-    { title: "Active", status: true },
-    { title: "Complited", status: false },
+    { title: "Active", status: "false" },
+    { title: "Complited", status: "true" },
   ];
 
   return (
