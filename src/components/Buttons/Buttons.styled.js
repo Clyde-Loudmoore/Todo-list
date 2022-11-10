@@ -17,7 +17,7 @@ const ButtonsWrapper = styled.div`
       transform: scale(1.1);
     }
     :active {
-      background: #E7C7A4;
+      background: #8ED1FC;
     }
   }
 `;
