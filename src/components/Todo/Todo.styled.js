@@ -8,10 +8,10 @@ const TaskListWrapper = styled.div`
   }
 
   .todo__list {
-    background: #f2f56790;
+    background: #a4d7e7;
     padding: 10px 20px;
     margin-top: 10px;
-    border: 2px solid #0065ff;
+    border: 2px solid #4a90e2;
     list-style-type: none;
     word-break: break-all;
     display: flex;
@@ -20,7 +20,6 @@ const TaskListWrapper = styled.div`
     border-radius: 5px;
     :hover {
       transform: scale(1.1);
-      background: #f3f567;
     }
   }
 
@@ -44,6 +43,11 @@ const TaskListWrapper = styled.div`
   }
   .todo__delete img {
     width: 20px;
+  }
+  .todo__editTask {
+    outline: 0;
+    border: 1px solid #4a90e2;
+    border-radius: 5px;
   }
 `;
 

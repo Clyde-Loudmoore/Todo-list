@@ -11,16 +11,14 @@ const FormWrapper = styled.form`
     height: 25px;
     padding: 10px 0 10px 25px;
     margin: 0 auto;
-    background: #f2f56790;
-    border: 2px solid #0065FF;
+    background: #a4d7e7;
+    border: 2px solid #4a90e2;
     border-radius: 5px;
     cursor: pointer;
     :hover {
       transform: scale(1.08);
-      background: #f3f567;
     }
     :focus {
-      background: #f3f567;
       outline: none;
     }
   }

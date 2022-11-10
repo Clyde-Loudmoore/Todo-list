@@ -8,8 +8,8 @@ const FooterContainer = styled.footer`
   }
   p {
     margin-bottom: 0;
-    background: #f2f56790;
-    border: 2px solid #0065ff;
+    background: #a4d7e7;
+    border: 2px solid #4A90E2;
     border-radius: 5px;
     padding: 5px;
     :hover {

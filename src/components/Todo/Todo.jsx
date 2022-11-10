@@ -17,6 +17,7 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
     if (isEdit) {
       editText = (
         <input
+          className="todo__editTask"
           value={userInputValue}
           autoFocus
           onChange={onChange}

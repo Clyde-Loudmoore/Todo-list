@@ -9,13 +9,15 @@ const ButtonsWrapper = styled.div`
     width: 80px;
     height: 30px;
     margin: 0 10px;
-    background: #f3f56779;
-    border: 2px solid #0065FF;
+    background: #a4d7e7;
+    border: 2px solid #4a90e2;
     border-radius: 20px;
     cursor: pointer;
     :hover {
-      background: #f3f567;
       transform: scale(1.1);
+    }
+    :active {
+      background: #E7C7A4;
     }
   }
 `;
