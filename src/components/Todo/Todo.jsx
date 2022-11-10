@@ -46,8 +46,8 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
             <input
               type="checkbox"
               className="todo__checkbox"
-              defaultChecked={todo.status}
-              onClick={() => toggleTask(todo.id)}
+              checked={todo.status}
+              onChange={() => toggleTask(todo.id)}
             />
             {editTask()}
           </div>

@@ -12,25 +12,19 @@ const App = () => {
     JSON.parse(localStorage.getItem("todos")) || []
   );
   const [filteredTodos, setFilteredTodos] = React.useState("all");
-
   React.useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const todoFilter = React.useMemo(() => {
-    return todos.filter((todo) => {
-      if (filteredTodos === "true") {
-        return setFilteredTodos({ ...todo, status: true });
-      } else if (filteredTodos === "false") {
-        return setFilteredTodos({ ...todo, status: false });
-      } else if (filteredTodos === "all") {
-        return setFilteredTodos({ ...todo });
-      }
-      return todo;
-    });
+    if (filteredTodos === "complited") {
+      return todos.filter((item) => item.status === true);
+    }
+    if (filteredTodos === "active") {
+      return todos.filter((item) => item.status === false);
+    }
+    return todos;
   }, [filteredTodos, todos]);
-
-  console.log(todoFilter);
 
   const addTask = (userInput) => {
     if (userInput) {
