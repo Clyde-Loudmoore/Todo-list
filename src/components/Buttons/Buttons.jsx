@@ -1,14 +1,14 @@
-import "./Buttons.css";
+import ButtonsWrapper from "./Buttons.styled";
 
 const Buttons = ({ onClick }) => {
   const buttons = [
     { title: "All", status: "all" },
-    { title: "Active", status: 'active' },
-    { title: "Complited", status: 'complited' },
+    { title: "Active", status: "active" },
+    { title: "Complited", status: "complited" },
   ];
 
   return (
-    <div className="todo__buttons">
+    <ButtonsWrapper>
       {buttons.map((item, index) => {
         return (
           <button
@@ -20,7 +20,7 @@ const Buttons = ({ onClick }) => {
           </button>
         );
       })}
-    </div>
+    </ButtonsWrapper>
   );
 };
 

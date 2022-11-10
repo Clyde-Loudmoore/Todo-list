@@ -1,11 +1,11 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import Header from "../components/Header/Header";
-import Main from "../components/Main/Main";
-import Footer from "../components/Footer/Footer";
+import Header from "../components/Header";
+import Main from "../components/Main";
+import Footer from "../components/Footer";
 
-import "./App.css";
+import TodoContainer from "./App.styles";
 
 const App = () => {
   const [todos, setTodos] = React.useState(
@@ -48,7 +48,7 @@ const App = () => {
   };
 
   return (
-    <div className="todo__container">
+    <TodoContainer>
       <Header />
       <Main
         todos={todos}
@@ -59,7 +59,7 @@ const App = () => {
         onDelete={removeTask}
       />
       <Footer todos={todos} />
-    </div>
+    </TodoContainer>
   );
 };
 

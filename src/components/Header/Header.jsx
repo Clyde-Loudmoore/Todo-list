@@ -1,10 +1,10 @@
-import "./Header.css";
+import HeaderWrapepr from "./Header.styled";
 
 const Header = () => {
   return (
-    <header className="todo__header-wrapper">
+    <HeaderWrapepr>
       <h1 className="todo__header">ToDo List</h1>
-    </header>
+    </HeaderWrapepr>
   );
 };
 

@@ -1,14 +1,14 @@
 import React from "react";
 
-import Form from "../Form/Form";
-import Todo from "../Todo/Todo";
-import Buttons from "../Buttons/Buttons";
+import Form from "../Form";
+import Todo from "../Todo";
+import Buttons from "../Buttons";
 
-import "./Main.css";
+import MainWrapper from "./Main.style";
 
 const Main = ({ addTask, onClick, toggleTask, onDelete, todoFilter }) => {
   return (
-    <main className="todo__main">
+    <MainWrapper>
       <Form addTask={addTask} />
       <Buttons onClick={onClick} />
       {todoFilter.map((todo) => {
@@ -21,7 +21,7 @@ const Main = ({ addTask, onClick, toggleTask, onDelete, todoFilter }) => {
           />
         );
       })}
-    </main>
+    </MainWrapper>
   );
 };
 

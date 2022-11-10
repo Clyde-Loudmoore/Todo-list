@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Form.css";
+import FormWrapper from "./Form.styled";
 
 const Form = ({ addTask }) => {
   const [userInput, setUserInput] = React.useState("");
@@ -16,7 +16,7 @@ const Form = ({ addTask }) => {
   };
 
   return (
-    <form className="todo__form" onSubmit={handleSubmit}>
+    <FormWrapper onSubmit={handleSubmit}>
       <input
         value={userInput}
         type="text"
@@ -24,7 +24,7 @@ const Form = ({ addTask }) => {
         className="todo__input"
         placeholder="What needs to be done?"
       ></input>
-    </form>
+    </FormWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Footer.css";
+import FooterContainer from "./FooterContainer.styled";
 
 const countComplitedTask = (todos) => {
   let count = 0;
@@ -21,14 +21,14 @@ const Footer = (props) => {
   );
 
   return (
-    <div className="todo__counter-wrapper">
+    <FooterContainer>
       {props.todos.length > 0 && (
-        <div className="todo__counter">
+        <div className="todo__content-wrapper">
           <p>total active: {props.todos.length - counterTask}</p>
           <p>total complited: {counterTask}</p>
         </div>
       )}
-    </div>
+    </FooterContainer>
   );
 };
 

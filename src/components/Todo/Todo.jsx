@@ -2,7 +2,7 @@ import React from "react";
 
 import Delete from "./img/delete.png";
 
-import "./Todo.css";
+import TaskListWrapper from "./Todo.styled";
 
 const Todo = ({ todo, toggleTask, onDelete }) => {
   const [isEdit, setIsEdit] = React.useState(false);
@@ -39,7 +39,7 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
   };
 
   return (
-    <div className="todo__tasklist" key={todo.id}>
+    <TaskListWrapper key={todo.id}>
       <ul className="todo">
         <li className="todo__list">
           <div className="todo__list-left">
@@ -62,7 +62,7 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
           </div>
         </li>
       </ul>
-    </div>
+    </TaskListWrapper>
   );
 };
 
