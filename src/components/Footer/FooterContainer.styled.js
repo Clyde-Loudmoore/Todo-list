@@ -8,7 +8,10 @@ const FooterContainer = styled.footer`
   }
   p {
     margin-bottom: 0;
-    border-bottom: 2px dotted #c6c941;
+    background: #f2f56790;
+    border: 2px solid #0065ff;
+    border-radius: 5px;
+    padding: 5px;
     :hover {
       transform: scale(1.2);
     }

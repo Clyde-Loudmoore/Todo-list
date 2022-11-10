@@ -11,7 +11,7 @@ const TaskListWrapper = styled.div`
     background: #f2f56790;
     padding: 10px 20px;
     margin-top: 10px;
-    border: 2px dotted #c6c941;
+    border: 2px solid #0065ff;
     list-style-type: none;
     word-break: break-all;
     display: flex;
@@ -35,7 +35,7 @@ const TaskListWrapper = styled.div`
     }
   }
   .todo__delete {
-    background: #f2f56790;
+    background: none;
     border: none;
     padding: 0;
     :hover {
@@ -44,10 +44,6 @@ const TaskListWrapper = styled.div`
   }
   .todo__delete img {
     width: 20px;
-  }
-  .todo__text {
-    background: #f2f56790;
-    border: none;
   }
 `;
 

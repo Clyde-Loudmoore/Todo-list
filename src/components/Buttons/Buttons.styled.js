@@ -10,7 +10,7 @@ const ButtonsWrapper = styled.div`
     height: 30px;
     margin: 0 10px;
     background: #f3f56779;
-    border: 2px dotted #a7a84790;
+    border: 2px solid #0065FF;
     border-radius: 20px;
     cursor: pointer;
     :hover {

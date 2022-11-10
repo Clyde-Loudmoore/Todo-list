@@ -10,9 +10,9 @@ const FormWrapper = styled.form`
     width: 75%;
     height: 25px;
     padding: 10px 0 10px 25px;
-    margin: 35px auto 0 auto;
+    margin: 0 auto;
     background: #f2f56790;
-    border: 2px dotted #a7a84790;
+    border: 2px solid #0065FF;
     border-radius: 5px;
     cursor: pointer;
     :hover {
