@@ -12,6 +12,7 @@ const App = () => {
     JSON.parse(localStorage.getItem("todos")) || []
   );
   const [filteredTodos, setFilteredTodos] = React.useState("all");
+
   React.useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -51,7 +52,6 @@ const App = () => {
     <TodoContainer>
       <Header />
       <Main
-        todos={todos}
         todoFilter={todoFilter}
         addTask={addTask}
         onClick={setFilteredTodos}
