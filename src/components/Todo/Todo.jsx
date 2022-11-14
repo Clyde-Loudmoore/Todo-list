@@ -1,12 +1,17 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+import { removeTask, toggleTask } from "../../store/todoSlice";
+
 import Delete from "./img/delete.png";
 
 import TaskListWrapper from "./Todo.styled";
 
-const Todo = ({ todo, toggleTask, onDelete }) => {
+const Todo = ({ todo }) => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [userInputValue, setUserInputValue] = React.useState(todo.task);
+
+  const dispatch = useDispatch();
 
   const onChange = (event) => {
     setUserInputValue(event.target.value);
@@ -48,7 +53,7 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
               type="checkbox"
               className="todo__checkbox"
               checked={todo.status}
-              onChange={() => toggleTask(todo.id)}
+              onChange={() => dispatch(toggleTask(todo.id))}
             />
             {editTask()}
           </div>
@@ -56,7 +61,7 @@ const Todo = ({ todo, toggleTask, onDelete }) => {
             <button
               className="todo__delete"
               type="button"
-              onClick={() => onDelete(todo.id)}
+              onClick={() => dispatch(removeTask(todo.id))}
             >
               <img src={Delete} alt="delete" />
             </button>

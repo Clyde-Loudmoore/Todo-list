@@ -10,7 +10,7 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
-  const addTodo = () => dispatch(addTask(userInput));
+  const addTodo = () => dispatch(addTask({ userInput }));
 
   const handleChange = (e) => {
     setUserInput(e.currentTarget.value);
@@ -18,7 +18,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(userInput);
+    addTodo();
     setUserInput("");
   };
 
@@ -30,6 +30,8 @@ const Form = () => {
         onChange={handleChange}
         className="todo__input"
         placeholder="What needs to be done?"
+        required
+        pattern="^[^\s]+(\s.*)?$"
       ></input>
     </FormWrapper>
   );

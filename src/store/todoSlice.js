@@ -9,13 +9,18 @@ const todoSlice = createSlice({
   },
   reducers: {
     addTask(state, action) {
-      console.log(state);
-      console.log(action);
-
-      state.todos.push({ id: uuidv4(), task: action.payload, status: false });
+      state.todos.push({ id: uuidv4(), task: action.payload.userInput, status: false });
     },
-    toggleTask(state, action) {},
-    removeTask(state, action) {},
+    toggleTask(state, action) {
+        const toggledTask = state.todos.find(todo => todo.id === action.payload);
+        toggledTask.status = !toggledTask.status;
+    },
+    removeTask(state, action) {
+        console.log(state);
+        console.log(action);
+
+        state.todos = state.todos.filter(todo => todo.id !== action.payload)
+    },
   },
 });
 

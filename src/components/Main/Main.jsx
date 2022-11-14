@@ -7,16 +7,16 @@ import Buttons from "../Buttons";
 
 import MainWrapper from "./Main.style";
 
-const Main = ({ addTask, onClick, onDelete }) => {
-  
+const Main = ({ onClick}) => {
+
   const todos = useSelector((state) => state.todos.todos);
 
   return (
     <MainWrapper>
-      <Form addTask={addTask} />
+      <Form />
       <Buttons onClick={onClick} />
       {todos.map((todo) => {
-        return <Todo todo={todo} key={todo.id} onDelete={onDelete} />;
+        return <Todo todo={todo} key={todo.id} />;
       })}
     </MainWrapper>
   );

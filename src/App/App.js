@@ -26,29 +26,11 @@ const App = () => {
   //   return todos;
   // }, [filteredTodos, todos]);
 
-
-  const toggleTask = (id) => {
-    // const todoStatus = [
-    //   ...todos.map((todo) =>
-    //     todo.id === id ? { ...todo, status: !todo.status } : { ...todo }
-    //   ),
-    // ];
-    // setTodos(todoStatus);
-  };
-
-  const removeTask = (id) => {
-    // const filteredTodo = [...todos.filter((todo) => todo.id !== id)];
-    // setTodos(filteredTodo);
-  };
-
   return (
     <TodoContainer>
       <Header />
       <Main
-        // addTask={addTask}
-        // onClick={setFilteredTodos}
-        toggleTask={toggleTask}
-        onDelete={removeTask}
+      // onClick={setFilteredTodos}
       />
       <Footer />
     </TodoContainer>
