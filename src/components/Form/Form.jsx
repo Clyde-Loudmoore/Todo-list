@@ -1,9 +1,16 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+import { addTask } from "../../store/todoSlice";
+
 import FormWrapper from "./Form.styled";
 
-const Form = ({ addTask }) => {
+const Form = () => {
   const [userInput, setUserInput] = React.useState("");
+
+  const dispatch = useDispatch();
+
+  const addTodo = () => dispatch(addTask(userInput));
 
   const handleChange = (e) => {
     setUserInput(e.currentTarget.value);
@@ -11,7 +18,7 @@ const Form = ({ addTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(userInput);
+    addTodo(userInput);
     setUserInput("");
   };
 
