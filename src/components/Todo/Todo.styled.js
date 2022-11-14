@@ -29,6 +29,7 @@ const TaskListWrapper = styled.div`
 
   .todo__checkbox {
     margin-right: 5px;
+    cursor: pointer;
     :hover {
       transform: scale(1.3);
     }
@@ -37,6 +38,7 @@ const TaskListWrapper = styled.div`
     background: none;
     border: none;
     padding: 0;
+    cursor: pointer;
     :hover {
       transform: scale(1.3);
     }

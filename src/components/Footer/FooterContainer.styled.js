@@ -12,6 +12,7 @@ const FooterContainer = styled.footer`
     border: 2px solid #4A90E2;
     border-radius: 5px;
     padding: 5px;
+    cursor: default;
     :hover {
       transform: scale(1.2);
     }
