@@ -1,22 +1,27 @@
+import { useDispatch } from "react-redux";
+import { filterTodo } from "../../store/todoSlice";
+
 import ButtonsWrapper from "./Buttons.styled";
 
-const Buttons = ({ onClick }) => {
-  const buttons = [
-    { title: "All", status: "all" },
-    { title: "Active", status: "active" },
-    { title: "Complited", status: "complited" },
-  ];
+const buttons = ["All", "Active", "Complited"];
+
+const Buttons = () => {
+  const dispatch = useDispatch();
+
+  const handleFilterTodos = (item) => {
+    dispatch(filterTodo(item));
+  };
 
   return (
     <ButtonsWrapper>
-      {buttons.map((item, index) => {
+      {buttons.map((item) => {
         return (
           <button
             className="buttons"
-            key={index}
-            onClick={() => onClick(item.status)}
+            key={item}
+            onClick={() => handleFilterTodos(item)}
           >
-            {item.title}
+            {item}
           </button>
         );
       })}

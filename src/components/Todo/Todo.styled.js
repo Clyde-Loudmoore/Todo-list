@@ -30,10 +30,14 @@ const TaskListWrapper = styled.div`
   .todo__checkbox {
     margin-right: 5px;
     cursor: pointer;
+    :checked + div {
+      text-decoration: line-through;
+    }
     :hover {
       transform: scale(1.3);
     }
   }
+
   .todo__delete {
     background: none;
     border: none;
@@ -43,9 +47,11 @@ const TaskListWrapper = styled.div`
       transform: scale(1.3);
     }
   }
+
   .todo__delete img {
     width: 20px;
   }
+
   .todo__editTask {
     outline: 0;
     border: 1px solid #4a90e2;
