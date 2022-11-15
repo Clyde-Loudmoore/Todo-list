@@ -2,10 +2,12 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 import { v4 as uuidv4 } from "uuid";
 
+export const newTodosArray = JSON.parse(localStorage.getItem("todos")) || [];
+
 const todoSlice = createSlice({
   name: "todos",
   initialState: {
-    todos: [],
+    todos: newTodosArray,
     filter: "All",
   },
   reducers: {
