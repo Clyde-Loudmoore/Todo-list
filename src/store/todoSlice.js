@@ -2,7 +2,7 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 import { v4 as uuidv4 } from "uuid";
 
-export const newTodosArray = JSON.parse(localStorage.getItem("todos")) || [];
+const newTodosArray = JSON.parse(localStorage.getItem("todos")) || [];
 
 const todoSlice = createSlice({
   name: "todos",

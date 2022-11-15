@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { filteringTask, newTodosArray } from "../../store/todoSlice";
+import { filteringTask } from "../../store/todoSlice";
 
 import Form from "../Form";
 import Todo from "../Todo";
@@ -12,8 +12,8 @@ const Main = () => {
   const newTodos = useSelector(filteringTask);
 
   React.useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(newTodosArray));
-  }, [newTodosArray]);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+  }, [newTodos]);
 
   return (
     <MainWrapper>
