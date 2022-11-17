@@ -23,26 +23,26 @@ const Todo: React.FC<TodoProps> = ({ id, task, status }) => {
     setUserInputValue(e.target.value);
   };
 
-  const editTask = () => {
-    let editText;
-    if (isEdit) {
-      editText = (
-        <input
-          className="todo__editTask"
-          value={task}
-          autoFocus
-          onChange={onChange}
-          onBlur={() => setIsEdit(false)}
-          onKeyDown={(e) => handlePressKey(e)}
-        />
-      );
-    } else {
-      editText = (
-        <div onDoubleClick={() => setIsEdit(true)}>{userInputValue}</div>
-      );
-    }
-    return editText;
-  };
+  // const editTask = () => {
+  //   let editText;
+  //   if (isEdit) {
+  //     editText = (
+  //       <input
+  //         className="todo__editTask"
+  //         value={task}
+  //         autoFocus
+  //         onChange={onChange}
+  //         onBlur={() => setIsEdit(false)}
+  //         onKeyDown={(e) => handlePressKey(e)}
+  //       />
+  //     );
+  //   } else {
+  //     editText = (
+  //       <div onDoubleClick={() => setIsEdit(true)}>{userInputValue}</div>
+  //     );
+  //   }
+  //   return editText;
+  // };
 
   const handlePressKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -51,7 +51,7 @@ const Todo: React.FC<TodoProps> = ({ id, task, status }) => {
   };
 
   return (
-    <TaskListWrapper className="todo__list" >
+    <TaskListWrapper className="todo__list">
       <div className="todo__list-left">
         <input
           type="checkbox"
@@ -59,7 +59,18 @@ const Todo: React.FC<TodoProps> = ({ id, task, status }) => {
           checked={status}
           onChange={() => dispatch(toggleTask(id))}
         />
-        {editTask()}
+        {isEdit ? (
+          <input
+            className="todo__editTask"
+            value={userInputValue}
+            autoFocus
+            onChange={onChange}
+            onBlur={() => setIsEdit(false)}
+            onKeyDown={(e) => handlePressKey(e)}
+          />
+        ) : (
+          <div onDoubleClick={() => setIsEdit(true)}>{userInputValue}</div>
+        )}
       </div>
       <div className="todo__list-remove">
         <button

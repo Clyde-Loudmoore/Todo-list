@@ -15,7 +15,7 @@ const Main: React.FC = () => {
   React.useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(newTodos.filteredTodos));
   }, [newTodos.filteredTodos]);
-console.log(newTodos.filteredTodos)
+
   return (
     <MainWrapper>
       <Form />
