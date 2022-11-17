@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { useAppDispatch } from "../../hook";
-import { removeTask, toggleTask } from "../../store/todoSlice";
+import { useAppDispatch } from '../../hook';
+import { removeTask, toggleTask } from '../../store/todoSlice';
 
-import Delete from "./img/delete.png";
+import Delete from './img/delete.png';
 
-import TaskListWrapper from "./Todo.styled";
+import TaskListWrapper from './Todo.styled';
 
-interface TodoProps {
+interface ITodoProps {
   id: string;
   task: string;
   status: boolean;
 }
 
-const Todo: React.FC<TodoProps> = ({ id, task, status }) => {
+const Todo: React.FC<ITodoProps> = ({ id, task, status }) => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [userInputValue, setUserInputValue] = React.useState(task);
 
@@ -23,29 +23,8 @@ const Todo: React.FC<TodoProps> = ({ id, task, status }) => {
     setUserInputValue(e.target.value);
   };
 
-  // const editTask = () => {
-  //   let editText;
-  //   if (isEdit) {
-  //     editText = (
-  //       <input
-  //         className="todo__editTask"
-  //         value={task}
-  //         autoFocus
-  //         onChange={onChange}
-  //         onBlur={() => setIsEdit(false)}
-  //         onKeyDown={(e) => handlePressKey(e)}
-  //       />
-  //     );
-  //   } else {
-  //     editText = (
-  //       <div onDoubleClick={() => setIsEdit(true)}>{userInputValue}</div>
-  //     );
-  //   }
-  //   return editText;
-  // };
-
   const handlePressKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       setIsEdit(false);
     }
   };

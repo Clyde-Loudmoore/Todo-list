@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { useAppDispatch } from "../../hook";
-import { addTask } from "../../store/todoSlice";
+import { useAppDispatch } from '../../hook';
+import { addTask } from '../../store/todoSlice';
 
-import FormWrapper from "./Form.styled";
+import FormWrapper from './Form.styled';
 
 const Form: React.FC = () => {
-  const [userInput, setUserInput] = React.useState("");
+  const [userInput, setUserInput] = React.useState('');
 
   const dispatch = useAppDispatch();
 
@@ -19,7 +19,7 @@ const Form: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addTodo();
-    setUserInput("");
+    setUserInput('');
   };
 
   return (
@@ -32,7 +32,7 @@ const Form: React.FC = () => {
         placeholder="What needs to be done?"
         required
         pattern="^[^\s]+(\s.*)?$"
-      ></input>
+       />
     </FormWrapper>
   );
 };

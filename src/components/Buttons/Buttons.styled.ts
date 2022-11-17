@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ButtonsWrapper = styled.div`
   padding-top: 22px;

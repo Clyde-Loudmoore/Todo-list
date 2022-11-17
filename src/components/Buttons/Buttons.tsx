@@ -1,9 +1,9 @@
-import { useAppDispatch } from "../../hook";
-import { filterTodo } from "../../store/todoSlice";
+import { useAppDispatch } from '../../hook';
+import { filterTodo } from '../../store/todoSlice';
 
-import ButtonsWrapper from "./Buttons.styled";
+import ButtonsWrapper from './Buttons.styled';
 
-const buttons = ["All", "Active", "Complited"];
+const buttons = ['All', 'Active', 'Complited'];
 
 const Buttons = () => {
   const dispatch = useAppDispatch();

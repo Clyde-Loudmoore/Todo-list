@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { useAppSelector } from "../../hook";
+import { useAppSelector } from '../../hook';
 
-import Form from "../Form";
-import Todo from "../Todo";
-import Buttons from "../Buttons";
+import Form from '../Form';
+import Todo from '../Todo';
+import Buttons from '../Buttons';
 
-import MainWrapper from "./Main.style";
-import { filteringTask } from "../../store/todoSlice";
+import MainWrapper from './Main.style';
+import { filteringTask } from '../../store/todoSlice';
 
 const Main: React.FC = () => {
   const newTodos = useAppSelector(filteringTask);
 
   React.useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(newTodos.filteredTodos));
+    localStorage.setItem('todos', JSON.stringify(newTodos.filteredTodos));
   }, [newTodos.filteredTodos]);
 
   return (

@@ -1,6 +1,6 @@
-import HeaderWrapepr from "./Header.styled";
+import HeaderWrapepr from './Header.styled';
 
-import Logo from "./images/logo512.png";
+import Logo from './images/logo512.png';
 
 const Header = () => {
   return (

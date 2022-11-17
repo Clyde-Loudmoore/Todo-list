@@ -1,8 +1,8 @@
-import { useAppSelector } from "../../hook";
+import { useAppSelector } from '../../hook';
 
-import { filteringTask } from "../../store/todoSlice";
+import { filteringTask } from '../../store/todoSlice';
 
-import FooterContainer from "./FooterContainer.styled";
+import FooterContainer from './FooterContainer.styled';
 
 const Footer = () => {
   const newTodos = useAppSelector(filteringTask);

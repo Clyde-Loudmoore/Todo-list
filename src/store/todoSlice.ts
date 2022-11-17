@@ -1,29 +1,29 @@
-import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./index";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
+import type { RootStateType } from './index';
 
-import { v4 as uuidv4 } from "uuid";
-
-type Todo = {
+type TodoType = {
   id: string;
   task: string;
   status: boolean;
 };
 
-type TodosState = {
-  todos: Todo[];
+type TodosStateType = {
+  todos: TodoType[];
   filter: string;
 };
 
-const newTodosArray: Todo[] =
-  JSON.parse(localStorage.getItem("todos") as string) || [];
+const newTodosArray: TodoType[] =
+  JSON.parse(localStorage.getItem('todos') as string) || [];
 
-const initialState: TodosState = {
+const initialState: TodosStateType = {
   todos: newTodosArray,
-  filter: "All",
+  filter: 'All',
 };
 
 const todoSlice = createSlice({
-  name: "todos",
+  name: 'todos',
   initialState,
   reducers: {
     addTask(state, action: PayloadAction<string>) {
@@ -35,7 +35,7 @@ const todoSlice = createSlice({
     },
     toggleTask(state, action: PayloadAction<string>) {
       const toggledTask = state.todos.find(
-        (todo) => todo.id === action.payload
+        (todo) => todo.id === action.payload,
       );
       if (toggledTask) {
         toggledTask.status = !toggledTask.status;
@@ -51,28 +51,29 @@ const todoSlice = createSlice({
 });
 
 export const filteringTask = createSelector(
-  (state: RootState) => state.todos.todos,
-  (state: RootState) => state.todos.filter,
+  (state: RootStateType) => state.tasks.todos,
+  (state: RootStateType) => state.tasks.filter,
   (todos, filter) => {
     let count = 0;
     todos.map((todo) => {
       if (todo.status) {
         return count++;
-      } else if (!todo.status) {
+      }
+      if (!todo.status) {
         return count;
       }
       return count;
     });
-    if (filter === "Complited") {
+    if (filter === 'Complited') {
       const filteredTodos = todos.filter((item) => item.status);
       return { filteredTodos, activeCount: count };
     }
-    if (filter === "Active") {
+    if (filter === 'Active') {
       const filteredTodos = todos.filter((item) => !item.status);
       return { filteredTodos, activeCount: count };
     }
     return { filteredTodos: todos, activeCount: count };
-  }
+  },
 );
 
 export const { addTask, toggleTask, removeTask, filterTodo } =
