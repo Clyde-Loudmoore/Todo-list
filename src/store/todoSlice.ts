@@ -45,8 +45,6 @@ const todoSlice = createSlice({
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
     filterTodo(state, action: PayloadAction<string>) {
-      console.log(state, action);
-
       state.filter = action.payload;
     },
   },
@@ -56,13 +54,24 @@ export const filteringTask = createSelector(
   (state: RootState) => state.todos.todos,
   (state: RootState) => state.todos.filter,
   (todos, filter) => {
+    let count = 0;
+    todos.map((todo) => {
+      if (todo.status) {
+        return count++;
+      } else if (!todo.status) {
+        return count;
+      }
+      return count;
+    });
     if (filter === "Complited") {
-      return todos.filter((item) => item.status);
+      const filteredTodos = todos.filter((item) => item.status);
+      return { filteredTodos, activeCount: count };
     }
     if (filter === "Active") {
-      return todos.filter((item) => !item.status);
+      const filteredTodos = todos.filter((item) => !item.status);
+      return { filteredTodos, activeCount: count };
     }
-    return todos;
+    return { filteredTodos: todos, activeCount: count };
   }
 );
 

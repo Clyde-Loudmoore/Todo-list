@@ -13,16 +13,16 @@ const Main: React.FC = () => {
   const newTodos = useAppSelector(filteringTask);
 
   React.useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(newTodos));
-  }, [newTodos]);
-
+    localStorage.setItem("todos", JSON.stringify(newTodos.filteredTodos));
+  }, [newTodos.filteredTodos]);
+console.log(newTodos.filteredTodos)
   return (
     <MainWrapper>
       <Form />
       <Buttons />
       <div className="todo__content-wrapper">
         <ul className="todo">
-          {newTodos.map((item) => {
+          {newTodos.filteredTodos.map((item) => {
             return (
               <Todo
                 key={item.id}
