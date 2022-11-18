@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/comma-dangle */
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
@@ -35,7 +36,7 @@ const todoSlice = createSlice({
     },
     toggleTask(state, action: PayloadAction<string>) {
       const toggledTask = state.todos.find(
-        (todo) => todo.id === action.payload,
+        (todo) => todo.id === action.payload
       );
       if (toggledTask) {
         toggledTask.status = !toggledTask.status;
@@ -55,25 +56,23 @@ export const filteringTask = createSelector(
   (state: RootStateType) => state.tasks.filter,
   (todos, filter) => {
     let count = 0;
-    todos.map((todo) => {
-      if (todo.status) {
-        return count++;
+
+    let filteredTodos = todos.filter((item) => {
+      if (item.status) {
+        count++;
       }
-      if (!todo.status) {
-        return count;
-      }
-      return count;
+      return { filteredTodos: count };
     });
     if (filter === 'Complited') {
-      const filteredTodos = todos.filter((item) => item.status);
+      filteredTodos = todos.filter((item) => item.status);
       return { filteredTodos, activeCount: count };
     }
     if (filter === 'Active') {
-      const filteredTodos = todos.filter((item) => !item.status);
+      filteredTodos = todos.filter((item) => !item.status);
       return { filteredTodos, activeCount: count };
     }
     return { filteredTodos: todos, activeCount: count };
-  },
+  }
 );
 
 export const { addTask, toggleTask, removeTask, filterTodo } =

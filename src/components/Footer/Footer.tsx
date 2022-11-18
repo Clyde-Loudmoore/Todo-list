@@ -1,3 +1,4 @@
+/* eslint-disable jsx-quotes */
 import { useAppSelector } from '../../hook';
 
 import { filteringTask } from '../../store/todoSlice';
@@ -10,7 +11,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       {newTodos.filteredTodos.length > 0 && (
-        <div className="todo__content-wrapper">
+        <div className='todo__content-wrapper'>
           <p>
             total active: {newTodos.filteredTodos.length - newTodos.activeCount}
           </p>
