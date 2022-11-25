@@ -1,11 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/comma-dangle */
+/* eslint-disable no-console */
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
 import type { RootStateType } from './index';
+import { addTodo, deleteTodo, getAllTodos } from '../components/API/API';
 
 type TodoType = {
-  id: string;
+  _id: string;
   task: string;
   status: boolean;
 };
@@ -15,8 +17,7 @@ type TodosStateType = {
   filter: string;
 };
 
-const newTodosArray: TodoType[] =
-  JSON.parse(localStorage.getItem('todos') as string) || [];
+const newTodosArray: TodoType[] = [];
 
 const initialState: TodosStateType = {
   todos: newTodosArray,
@@ -27,27 +28,38 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTask(state, action: PayloadAction<string>) {
-      state.todos.push({
-        id: uuidv4(),
-        task: action.payload,
-        status: false,
-      });
-    },
+    // addTask(state, action: PayloadAction<string>) {
+    //   state.todos.push({
+    //     id: uuidv4(),
+    //     task: action.payload,
+    //     status: false,
+    //   });
+    // },
     toggleTask(state, action: PayloadAction<string>) {
       const toggledTask = state.todos.find(
-        (todo) => todo.id === action.payload
+        (todo) => todo._id === action.payload
       );
       if (toggledTask) {
         toggledTask.status = !toggledTask.status;
       }
     },
-    removeTask(state, action: PayloadAction<string>) {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-    },
     filterTodo(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllTodos.fulfilled, (state, action) => {
+        state.todos = action.payload;
+      })
+      .addCase(addTodo.fulfilled, (state, action) => {
+        state.todos.push(action.payload);
+      })
+      .addCase(deleteTodo.fulfilled, (state, action) => {
+        const id = action.payload;
+        const indexTodo = state.todos.findIndex((item) => item._id === id);
+        state.todos.splice(indexTodo, 1);
+      });
   },
 });
 
@@ -75,6 +87,5 @@ export const filteringTask = createSelector(
   }
 );
 
-export const { addTask, toggleTask, removeTask, filterTodo } =
-  todoSlice.actions;
+export const { toggleTask, filterTodo } = todoSlice.actions;
 export default todoSlice.reducer;

@@ -1,6 +1,10 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-quotes */
 import React from 'react';
 
-import { useAppSelector } from '../../hook';
+import { useAppSelector, useAppDispatch } from '../../hook';
+import { getAllTodos } from '../API/API';
 
 import Form from '../Form';
 import Todo from '../Todo';
@@ -11,22 +15,23 @@ import { filteringTask } from '../../store/todoSlice';
 
 const Main: React.FC = () => {
   const newTodos = useAppSelector(filteringTask);
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(newTodos.filteredTodos));
-  }, [newTodos.filteredTodos]);
+    dispatch(getAllTodos());
+  }, []);
 
   return (
     <MainWrapper>
       <Form />
       <Buttons />
-      <div className="todo__content-wrapper">
-        <ul className="todo">
+      <div className='todo__content-wrapper'>
+        <ul className='todo'>
           {newTodos.filteredTodos.map((item) => {
             return (
               <Todo
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                _id={item._id}
                 task={item.task}
                 status={item.status}
               />
