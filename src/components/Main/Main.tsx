@@ -30,9 +30,9 @@ const Main: React.FC = () => {
           {newTodos.filteredTodos.map((item) => {
             return (
               <Todo
-                key={item._id}
-                _id={item._id}
-                task={item.task}
+                key={item.id}
+                id={item.id}
+                value={item.value}
                 status={item.status}
               />
             );

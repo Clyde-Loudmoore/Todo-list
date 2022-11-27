@@ -7,8 +7,8 @@ import type { RootStateType } from './index';
 import { addTodo, deleteTodo, getAllTodos } from '../components/API/API';
 
 type TodoType = {
-  _id: string;
-  task: string;
+  id: number;
+  value: string;
   status: boolean;
 };
 
@@ -28,16 +28,9 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    // addTask(state, action: PayloadAction<string>) {
-    //   state.todos.push({
-    //     id: uuidv4(),
-    //     task: action.payload,
-    //     status: false,
-    //   });
-    // },
-    toggleTask(state, action: PayloadAction<string>) {
+    toggleTask(state, action: PayloadAction<number>) {
       const toggledTask = state.todos.find(
-        (todo) => todo._id === action.payload
+        (todo) => todo.id === action.payload
       );
       if (toggledTask) {
         toggledTask.status = !toggledTask.status;
@@ -57,7 +50,7 @@ const todoSlice = createSlice({
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
         const id = action.payload;
-        const indexTodo = state.todos.findIndex((item) => item._id === id);
+        const indexTodo = state.todos.findIndex((item) => item.id === id);
         state.todos.splice(indexTodo, 1);
       });
   },
