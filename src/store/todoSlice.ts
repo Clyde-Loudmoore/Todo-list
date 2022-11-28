@@ -4,7 +4,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { RootStateType } from './index';
-import { addTodo, deleteTodo, getAllTodos } from '../components/API/API';
+import { getAllTodos } from '../components/API/API';
 
 type TodoType = {
   id: number;
@@ -41,18 +41,17 @@ const todoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(getAllTodos.fulfilled, (state, action) => {
-        state.todos = action.payload;
-      })
-      .addCase(addTodo.fulfilled, (state, action) => {
-        state.todos.push(action.payload);
-      })
-      .addCase(deleteTodo.fulfilled, (state, action) => {
-        const id = action.payload;
-        const indexTodo = state.todos.findIndex((item) => item.id === id);
-        state.todos.splice(indexTodo, 1);
-      });
+    builder.addCase(getAllTodos.fulfilled, (state, action) => {
+      state.todos = action.payload;
+    });
+    // .addCase(addTodo.fulfilled, (state, action) => {
+    //   state.todos.push(action.payload);
+    // })
+    // .addCase(deleteTodo.fulfilled, (state, action) => {
+    //   const id = action.payload;
+    //   const indexTodo = state.todos.findIndex((item) => item.id === id);
+    //   state.todos.splice(indexTodo, 1);
+    // });
   },
 });
 

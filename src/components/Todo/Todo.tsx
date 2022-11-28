@@ -57,7 +57,7 @@ const Todo: React.FC<ITodoProps> = ({ id, value, status }) => {
         <button
           className='todo__delete'
           type='button'
-          onClick={() => dispatch(deleteTodo(id))}
+          onClick={() => deleteTodo(id)}
         >
           <img src={Delete} alt='delete' />
         </button>
