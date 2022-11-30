@@ -1,13 +1,13 @@
 /* eslint-disable jsx-quotes */
 import React from 'react';
-// import { useAppDispatch } from '../../hook';
+import { useAppDispatch } from '../../hook';
 import { addTodo } from '../API/API';
 import FormWrapper from './Form.styled';
 
 const Form: React.FC = () => {
   const [userInput, setUserInput] = React.useState('');
 
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.currentTarget.value);
@@ -15,7 +15,7 @@ const Form: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addTodo(userInput);
+    dispatch(addTodo(userInput));
     setUserInput('');
   };
 

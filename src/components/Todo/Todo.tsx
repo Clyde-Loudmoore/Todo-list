@@ -10,12 +10,12 @@ import Delete from './img/delete.png';
 import TaskListWrapper from './Todo.styled';
 
 interface ITodoProps {
-  id: number;
+  _id: string;
   value: string;
   status: boolean;
 }
 
-const Todo: React.FC<ITodoProps> = ({ id, value, status }) => {
+const Todo: React.FC<ITodoProps> = ({ _id, value, status }) => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [userInputValue, setUserInputValue] = React.useState(value);
 
@@ -38,7 +38,7 @@ const Todo: React.FC<ITodoProps> = ({ id, value, status }) => {
           type='checkbox'
           className='todo__checkbox'
           checked={status}
-          onChange={() => dispatch(toggleTask(id))}
+          onChange={() => dispatch(toggleTask(_id))}
         />
         {isEdit ? (
           <input
@@ -57,7 +57,7 @@ const Todo: React.FC<ITodoProps> = ({ id, value, status }) => {
         <button
           className='todo__delete'
           type='button'
-          onClick={() => deleteTodo(id)}
+          onClick={() => dispatch(deleteTodo(_id))}
         >
           <img src={Delete} alt='delete' />
         </button>

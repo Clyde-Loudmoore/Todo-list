@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-quotes */
+// eslint-disable-next-line no-console
 import React from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../hook';
@@ -30,8 +32,8 @@ const Main: React.FC = () => {
           {newTodos.filteredTodos.map((item) => {
             return (
               <Todo
-                key={item.id}
-                id={item.id}
+                key={newTodos.filteredTodos.indexOf(item)}
+                _id={item._id}
                 value={item.value}
                 status={item.status}
               />
