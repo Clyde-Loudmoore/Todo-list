@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-quotes */
 import React from 'react';
 
 import { useAppDispatch } from '../../hook';
 import { toggleTask } from '../../store/todoSlice';
-import { deleteTask } from '../API';
+import { deleteTask, editTodo } from '../API';
 
 import Delete from './img/delete.png';
 
@@ -28,7 +29,13 @@ const Todo: React.FC<ITodoProps> = ({ _id, value, status }) => {
   const handlePressKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       setIsEdit(false);
+      editTodo(_id, userInputValue, status);
     }
+  };
+
+  const handleChangeTask = () => {
+    editTodo(_id, userInputValue, !status);
+    dispatch(toggleTask(_id));
   };
 
   return (
@@ -38,7 +45,7 @@ const Todo: React.FC<ITodoProps> = ({ _id, value, status }) => {
           type='checkbox'
           className='todo__checkbox'
           checked={status}
-          onChange={() => dispatch(toggleTask(_id))}
+          onChange={handleChangeTask}
         />
         {isEdit ? (
           <input

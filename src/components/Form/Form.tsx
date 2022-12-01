@@ -1,7 +1,7 @@
 /* eslint-disable jsx-quotes */
 import React from 'react';
 import { useAppDispatch } from '../../hook';
-import { addTodo } from '../API/API';
+import { addTodo } from '../API';
 import FormWrapper from './Form.styled';
 
 const Form: React.FC = () => {

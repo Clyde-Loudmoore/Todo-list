@@ -23,13 +23,22 @@ export const addTodo = createAsyncThunk('createTodo', async (value: string) => {
 });
 
 export const editTodo = async (_id: string, value: string, status: boolean) => {
-  await axiosInstance.patch(`/${_id}`, { value, status });
+  try {
+    await axiosInstance.patch(`/${_id}`, { value, status });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const deleteTask = createAsyncThunk(
   'deleteTodo',
   async (_id: string, { dispatch }) => {
-    await axiosInstance.delete(`/${_id}`);
-    dispatch(deleteTodo(_id));
+    try {
+      await axiosInstance.delete(`/${_id}`);
+
+      dispatch(deleteTodo(_id));
+    } catch (error) {
+      console.log(error);
+    }
   }
 );

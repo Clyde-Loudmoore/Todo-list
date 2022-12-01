@@ -29,13 +29,12 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     toggleTask(state, action: PayloadAction<string>) {
-      const toggledTask = state.todos.find(
+      const toggledTask = state.todos.findIndex(
         (todo) => todo._id === action.payload
       );
-      if (toggledTask) {
-        toggledTask.status = !toggledTask.status;
-      }
+      state.todos[toggledTask].status = !state.todos[toggledTask].status;
     },
+
     filterTodo(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
