@@ -4,7 +4,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { RootStateType } from './index';
-import { addTodo, getAllTodos, deleteTodo } from '../components/API/API';
+import { addTodo, getAllTodos } from '../components/API/API';
 
 type TodoType = {
   _id: string;
@@ -39,6 +39,9 @@ const todoSlice = createSlice({
     filterTodo(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
+    deleteTodo: (state, action) => {
+      state.todos = state.todos.filter((item) => item._id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,12 +50,6 @@ const todoSlice = createSlice({
       })
       .addCase(addTodo.fulfilled, (state, action) => {
         state.todos.push(action.payload);
-      })
-      .addCase(deleteTodo.fulfilled, (state, action) => {
-        const id = action.payload.id;
-        const indexTodo = state.todos.findIndex((item) => item._id === id);
-        state.todos.splice(indexTodo, 1);
-        return state;
       });
   },
 });
@@ -81,5 +78,5 @@ export const filteringTask = createSelector(
   }
 );
 
-export const { toggleTask, filterTodo } = todoSlice.actions;
+export const { toggleTask, filterTodo, deleteTodo } = todoSlice.actions;
 export default todoSlice.reducer;

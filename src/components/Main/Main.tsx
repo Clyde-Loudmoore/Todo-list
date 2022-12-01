@@ -32,7 +32,7 @@ const Main: React.FC = () => {
           {newTodos.filteredTodos.map((item) => {
             return (
               <Todo
-                key={newTodos.filteredTodos.indexOf(item)}
+                key={item._id}
                 _id={item._id}
                 value={item.value}
                 status={item.status}

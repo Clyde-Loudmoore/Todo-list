@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useAppDispatch } from '../../hook';
 import { toggleTask } from '../../store/todoSlice';
-import { deleteTodo } from '../API/API';
+import { deleteTask } from '../API';
 
 import Delete from './img/delete.png';
 
@@ -57,7 +57,7 @@ const Todo: React.FC<ITodoProps> = ({ _id, value, status }) => {
         <button
           className='todo__delete'
           type='button'
-          onClick={() => dispatch(deleteTodo(_id))}
+          onClick={() => dispatch(deleteTask(_id))}
         >
           <img src={Delete} alt='delete' />
         </button>

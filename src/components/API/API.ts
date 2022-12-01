@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { deleteTodo } from '../../store/todoSlice';
 
 const BASE_URL = 'http://localhost:3001/api/todos';
 
@@ -22,22 +23,13 @@ export const addTodo = createAsyncThunk('createTodo', async (value: string) => {
 });
 
 export const editTodo = async (_id: string, value: string, status: boolean) => {
-  await axiosInstance.patch(
-    `/${_id}`,
-    { value, status }
-
-    // inputValue === "" ? { done: !todo.done } : { name: inputValue }
-  );
+  await axiosInstance.patch(`/${_id}`, { value, status });
 };
 
-export const deleteTodo = createAsyncThunk(
+export const deleteTask = createAsyncThunk(
   'deleteTodo',
-  async (_id: string) => {
-    const res = await axiosInstance.delete(`/${_id}`);
-    return res.data;
+  async (_id: string, { dispatch }) => {
+    await axiosInstance.delete(`/${_id}`);
+    dispatch(deleteTodo(_id));
   }
 );
-
-// export const deleteTodo = (_id: string) => {
-//   axiosInstance.delete(`/${_id}`);
-// };
