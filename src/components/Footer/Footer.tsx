@@ -1,5 +1,5 @@
 /* eslint-disable jsx-quotes */
-import { useAppSelector } from '../../hook';
+import { useAppSelector } from '../../hooks/hook';
 
 import { filteringTask } from '../../store/todoSlice';
 

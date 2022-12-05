@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../hook';
+import { useAppDispatch } from '../../hooks/hook';
 import { filterTodo } from '../../store/todoSlice';
 
 import ButtonsWrapper from './Buttons.styled';

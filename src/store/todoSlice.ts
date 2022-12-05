@@ -4,7 +4,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import type { RootStateType } from './index';
-import { addTodo, getAllTodos } from '../components/API/API';
+import { getAllTodos, addTodo } from './todoThunk';
 
 type TodoType = {
   _id: string;
@@ -38,10 +38,12 @@ const todoSlice = createSlice({
     filterTodo(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
+
     deleteTodo: (state, action) => {
       state.todos = state.todos.filter((item) => item._id !== action.payload);
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(getAllTodos.fulfilled, (state, action) => {

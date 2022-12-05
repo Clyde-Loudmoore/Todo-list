@@ -5,8 +5,8 @@
 // eslint-disable-next-line no-console
 import React from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../hook';
-import { getAllTodos } from '../API/API';
+import { useAppSelector, useAppDispatch } from '../../hooks/hook';
+import { getAllTodos } from '../../store/todoThunk';
 
 import Form from '../Form';
 import Todo from '../Todo';

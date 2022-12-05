@@ -2,10 +2,10 @@
 /* eslint-disable jsx-quotes */
 import React from 'react';
 
-import { useAppDispatch } from '../../hook';
+import { useAppDispatch } from '../../hooks/hook';
 import { toggleTask } from '../../store/todoSlice';
-import { deleteTask, editTodo } from '../API';
-
+import { deleteTask } from '../../store/todoThunk';
+import { editTodo } from '../../API';
 import Delete from './img/delete.png';
 
 import TaskListWrapper from './Todo.styled';
